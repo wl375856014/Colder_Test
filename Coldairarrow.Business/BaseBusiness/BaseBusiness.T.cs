@@ -15,7 +15,7 @@ namespace Coldairarrow.Business
 {
     /// <summary>
     /// 描述：业务处理基类
-    /// 作者：Coldairarrow
+    /// 作者：WangLi
     /// </summary>
     /// <typeparam name="T">泛型约束（数据库实体）</typeparam>
     public class BaseBusiness<T> : IRepository<T> where T : class, new()
@@ -421,14 +421,7 @@ namespace Coldairarrow.Business
         /// <returns></returns>
         public AjaxResult Success()
         {
-            AjaxResult res = new AjaxResult
-            {
-                Success = true,
-                Msg = "请求成功！",
-                Data = null
-            };
-
-            return res;
+            return new AjaxResult { Success = true, Msg = "请求成功！", Data = null };
         }
 
         /// <summary>
@@ -438,14 +431,14 @@ namespace Coldairarrow.Business
         /// <returns></returns>
         public AjaxResult Success(string msg)
         {
-            AjaxResult res = new AjaxResult
+            return new AjaxResult
             {
                 Success = true,
                 Msg = msg,
                 Data = null
             };
 
-            return res;
+
         }
 
         /// <summary>
@@ -455,14 +448,14 @@ namespace Coldairarrow.Business
         /// <returns></returns>
         public AjaxResult Success(object data)
         {
-            AjaxResult res = new AjaxResult
+            return new AjaxResult
             {
                 Success = true,
                 Msg = "请求成功！",
                 Data = data
             };
 
-            return res;
+
         }
 
         /// <summary>
@@ -473,14 +466,12 @@ namespace Coldairarrow.Business
         /// <returns></returns>
         public AjaxResult Success(string msg, object data)
         {
-            AjaxResult res = new AjaxResult
+            return new AjaxResult
             {
                 Success = true,
                 Msg = msg,
                 Data = data
             };
-
-            return res;
         }
 
         /// <summary>
@@ -489,14 +480,12 @@ namespace Coldairarrow.Business
         /// <returns></returns>
         public AjaxResult Error()
         {
-            AjaxResult res = new AjaxResult
+            return new AjaxResult
             {
                 Success = false,
                 Msg = "请求失败！",
                 Data = null
             };
-
-            return res;
         }
 
         /// <summary>
@@ -506,14 +495,12 @@ namespace Coldairarrow.Business
         /// <returns></returns>
         public AjaxResult Error(string msg)
         {
-            AjaxResult res = new AjaxResult
+            return new AjaxResult
             {
                 Success = false,
                 Msg = msg,
                 Data = null
             };
-
-            return res;
         }
 
         #endregion

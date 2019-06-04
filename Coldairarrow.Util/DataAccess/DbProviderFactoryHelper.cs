@@ -49,7 +49,6 @@ namespace Coldairarrow.Util
                 case DatabaseType.Oracle: throw new Exception("暂不支持Oracle数据库");
                 default: throw new Exception("请传入有效的数据库！");
             }
-
             return factory;
         }
 
@@ -101,7 +100,9 @@ namespace Coldairarrow.Util
         public static DatabaseType DbTypeStrToDbType(string dbTypeStr)
         {
             if (dbTypeStr.IsNullOrEmpty())
+            {
                 throw new Exception("请输入数据库类型字符串！");
+            }
             else
             {
                 switch (dbTypeStr.ToLower())
@@ -123,7 +124,9 @@ namespace Coldairarrow.Util
         public static string DbTypeToDbTypeStr(DatabaseType dbType)
         {
             if (dbType.IsNullOrEmpty())
+            {
                 throw new Exception("请输入数据库类型！");
+            }
             else
             {
                 switch (dbType)
@@ -146,24 +149,23 @@ namespace Coldairarrow.Util
         {
             string conStr = string.Empty;
             string nameOfDbcon = string.Empty;
-            //若为连接字符串
-            if (nameOrconStr.Contains(";"))
+            if (nameOrconStr.Contains(";"))//若为连接字符串
+            {
                 conStr = nameOrconStr;
-            //若为"name=BaseDb"形式
-            else if (nameOrconStr.Contains("name="))
+            }
+            else if (nameOrconStr.Contains("name="))//若为"name=BaseDb"形式
             {
                 var strArray = nameOrconStr.Split("=".ToArray());
                 nameOfDbcon = strArray[1];
             }
-            //为连接名
-            else
+            else //为连接名
+            {
                 nameOfDbcon = nameOrconStr;
-
+            }
             if (!nameOfDbcon.IsNullOrEmpty())
             {
                 conStr = ConfigHelper.GetConnectionString(nameOfDbcon);
             }
-
             return conStr;
         }
 

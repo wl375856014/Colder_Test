@@ -28,6 +28,7 @@ namespace Coldairarrow.DataRepository
         private DatabaseType _dbType { get; set; }
         private string _entityNamespace { get; }
         private static ILoggerFactory _loger { get; } = new LoggerFactory(new ILoggerProvider[] { new EFCoreSqlLogeerProvider() });
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (_nameOrConStr.IsNullOrEmpty())
@@ -42,7 +43,6 @@ namespace Coldairarrow.DataRepository
                 case DatabaseType.PostgreSql: optionsBuilder.UseNpgsql(conStr); break;
                 default: throw new Exception("暂不支持该数据库！");
             }
-
             optionsBuilder.UseLoggerFactory(_loger);
         }
 

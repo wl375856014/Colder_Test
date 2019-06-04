@@ -49,7 +49,6 @@ namespace Coldairarrow.Business.Cache
                 if (cache != null)
                     CacheHelper.Cache.SetCache(cacheKey, cache);
             }
-
             return cache;
         }
 

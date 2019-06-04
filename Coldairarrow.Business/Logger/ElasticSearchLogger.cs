@@ -24,8 +24,11 @@ namespace Coldairarrow.Business
                 var res = _elasticClient.CreateIndex(descriptor);
             }
         }
+
         private static ConnectionSettings _connectionSettings { get; set; }
+
         private static ElasticClient _elasticClient { get; set; }
+
         public List<Base_SysLog> GetLogList(string logContent, string logType, string opUserName, DateTime? startTime, DateTime? endTime, Pagination pagination)
         {
             var client = GetElasticClient();
@@ -54,6 +57,7 @@ namespace Coldairarrow.Business
 
             return result.Documents.ToList();
         }
+
         public void WriteSysLog(Base_SysLog log)
         {
             GetElasticClient().IndexDocument(log);

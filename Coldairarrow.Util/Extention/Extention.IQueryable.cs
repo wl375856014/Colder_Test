@@ -12,7 +12,7 @@ namespace Coldairarrow.Util
 {
     /// <summary>
     /// IQueryable<T>的拓展操作
-    /// 作者：Coldairarrow
+    /// 作者：WangLi
     /// </summary>
     public static partial class Extention
     {

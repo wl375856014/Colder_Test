@@ -35,7 +35,7 @@ namespace Coldairarrow.DataRepository
         /// </summary>
         /// <param name="obj">初始化参数，可为连接字符串或者DbContext</param>
         /// <returns></returns>
-        public static IRepository GetRepository(Object obj = null, DatabaseType? dbType = null, string entityNamespace = null)
+        public static IRepository GetRepository(object obj = null, DatabaseType? dbType = null, string entityNamespace = null)
         {
             IRepository res = null;
             DatabaseType _dbType = GetDbType(dbType);
@@ -44,8 +44,9 @@ namespace Coldairarrow.DataRepository
             void BuildParamters()
             {
                 if (obj.IsNullOrEmpty())
+                {
                     return;
-
+                }
                 if (obj is DbContext)
                 {
                     paramters.Add(obj);
@@ -75,8 +76,9 @@ namespace Coldairarrow.DataRepository
                 _dbType = GlobalSwitch.DatabaseType;
             }
             else
+            {
                 _dbType = dbType.Value;
-
+            }
             return _dbType;
         }
 
@@ -86,7 +88,7 @@ namespace Coldairarrow.DataRepository
         /// <param name="obj">初始化参数，可为连接字符串或者DbContext</param>
         /// <param name="dbType">数据库类型</param>
         /// <returns></returns>
-        public static DbContext GetDbContext(Object obj, DatabaseType dbType, string entityNamespace)
+        public static DbContext GetDbContext(object obj, DatabaseType dbType, string entityNamespace)
         {
             if (obj.IsNullOrEmpty())
             {
@@ -94,14 +96,19 @@ namespace Coldairarrow.DataRepository
             }
             else
             {
-                //若参数为字符串
-                if (obj is String)
+                if (obj is string)//若参数为字符串
+                {
                     return new BaseDbContext((string)obj, dbType, entityNamespace);
-                //若参数为DbContext
-                else if (obj is DbContext)
+                }
+
+                else if (obj is DbContext)//若参数为DbContext
+                {
                     return (DbContext)Activator.CreateInstance(obj.GetType(), null);
+                }
                 else
+                {
                     throw new Exception("请传入有效的参数！");
+                }
             }
         }
 

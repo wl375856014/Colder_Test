@@ -15,7 +15,7 @@ namespace Coldairarrow.DataRepository
 {
     /// <summary>
     /// 描述：数据库仓储基类类
-    /// 作者：Coldairarrow
+    /// 作者：WangLi
     /// </summary>
     public class DbRepository : IRepository
     {

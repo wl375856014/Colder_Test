@@ -10,6 +10,7 @@ namespace Coldairarrow.Business
     class RDBMSLogger : ILogger
     {
         private IRepository _db { get; } = DbFactory.GetRepository();
+
         public List<Base_SysLog> GetLogList(string logContent, string logType, string opUserName, DateTime? startTime, DateTime? endTime, Pagination pagination)
         {
             var whereExp = LinqHelper.True<Base_SysLog>();
