@@ -21,14 +21,14 @@ namespace Coldairarrow.Web
     {
         public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
-            //var builder = new ConfigurationBuilder().SetBasePath(env.ContentRootPath)
-            //      .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-            //      .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)//这里采用appsettings.{env.EnvironmentName}.json根据当前的运行环境来加载相应的appsettings文件
-            //      .AddEnvironmentVariables();
+            var builder = new ConfigurationBuilder().SetBasePath(env.ContentRootPath)
+                  .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                  .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)//这里采用appsettings.{env.EnvironmentName}.json根据当前的运行环境来加载相应的appsettings文件
+                  .AddEnvironmentVariables();
 
-            //Configuration = builder.Build();
+            Configuration = builder.Build();
 
-            Configuration = configuration;
+            //Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }

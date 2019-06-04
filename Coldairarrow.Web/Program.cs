@@ -12,7 +12,7 @@ namespace Coldairarrow.Web
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
-            return WebHost.CreateDefaultBuilder(args).UseUrls("http://*:5000").UseStartup<Startup>();
+            return WebHost.CreateDefaultBuilder(args).UseKestrel().UseStartup<Startup>();
         }
     }
 }
